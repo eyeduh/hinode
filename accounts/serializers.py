@@ -8,7 +8,10 @@ from rest_framework.exceptions import ValidationError
 
 from users.utils import send_verification_code
 
+from users.models import UserProfile
+
 User = get_user_model()
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -69,7 +72,7 @@ class ObtainTokenSerializer(serializers.ModelSerializer):
         user = authenticate(**validated_data)
 
         if not user:
-            raise ValidationError('Wrong credentials sent')
+            raise ValidationError('Wrong credentials!')
 
         Token.objects.get_or_create(user=user)
 
