@@ -45,10 +45,11 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
+    'drf_registration',
 
     'nodes',
     'users',
-    'accounts'
+
 ]
 
 MIDDLEWARE = [
@@ -118,9 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
-LOCALE_PATHS = [
-    BASE_DIR , 'locals'
-]
+LOCALE_PATHS = [ BASE_DIR , 'locals']
 
 LANGUAGE_CODE = 'en-us'
 
@@ -143,6 +142,12 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTHENTICATION_BACKENDS = [
+    'drf_registration.auth.MultiFieldsModelBackend',
+]
 
-AUTHENTICATION_BACKENDS = ['accounts.authentication_backends.EmailBackend',
-                           'django.contrib.auth.backends.ModelBackend']
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
