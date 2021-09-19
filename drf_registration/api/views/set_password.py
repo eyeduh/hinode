@@ -45,3 +45,4 @@ class SetPasswordView(UpdateAPIView):
         data = get_user_profile_data(user)
 
         return Response(data, status=status.HTTP_200_OK)
+        

@@ -3,19 +3,6 @@ from rest_framework.response import Response
 
 
 class Pagination(pagination.PageNumberPagination):
-    """
-    Custom paginator for REST API responses
-    'links': {
-               'next': next page url,
-               'previous': previous page url
-            },
-            'count': number of records fetched,
-            'total_pages': total number of pages,
-            'next': bool has next page,
-            'previous': bool has previous page,
-            'results': result set
-    })
-    """
 
     def get_paginated_response(self, data):
         return Response({
@@ -37,10 +24,8 @@ class Pagination(pagination.PageNumberPagination):
         })
 
 
-class SimplePagination(pagination.PageNumberPagination): # pragma: no cover
-    """
-    Custom paginator for REST API responses
-    """
+class SimplePagination(pagination.PageNumberPagination): 
+
     def get_paginated_response(self, data):
         return Response({
             'records_filtered': self.page.paginator.count,

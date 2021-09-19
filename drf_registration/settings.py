@@ -27,7 +27,7 @@ DEFAULT_SETTINGS = {
         'password',
     ),
 
-    'USER_SERIALIZER': 'drf_registration.api.user.UserSerializer',
+    'USER_SERIALIZER': 'drf_registration.api.views.user.UserSerializer',
 
     'USER_VERIFY_CODE_ENABLED': False,
     'USER_VERIFY_FIELD': 'is_active',
@@ -51,7 +51,7 @@ DEFAULT_SETTINGS = {
     'REGISTER_SEND_WELCOME_EMAIL_SUBJECT': 'Welcome to the system',
     'REGISTER_SEND_WELCOME_EMAIL_TEMPLATE': '',
 
-    'LOGIN_SERIALIZER': 'drf_registration.api.login.LoginSerializer',
+    'LOGIN_SERIALIZER': 'drf_registration.api.views.login.LoginSerializer',
     'LOGIN_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
@@ -63,13 +63,13 @@ DEFAULT_SETTINGS = {
     'CHANGE_PASSWORD_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
-    'CHANGE_PASSWORD_SERIALIZER': 'drf_registration.api.change_password.ChangePasswordSerializer',
+    'CHANGE_PASSWORD_SERIALIZER': 'drf_registration.api.views.change_password.ChangePasswordSerializer',
 
     'RESET_PASSWORD_ENABLED': True,
     'RESET_PASSWORD_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-    'RESET_PASSWORD_SERIALIZER': 'drf_registration.api.reset_password.ResetPasswordSerializer',
+    'RESET_PASSWORD_SERIALIZER': 'drf_registration.api.views.reset_password.ResetPasswordSerializer',
     'RESET_PASSWORD_EMAIL_SUBJECT': 'Reset Password',
     'RESET_PASSWORD_EMAIL_TEMPLATE': '',
     'RESET_PASSWORD_CONFIRM_TEMPLATE': '',
@@ -81,7 +81,7 @@ DEFAULT_SETTINGS = {
     'SET_PASSWORD_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
-    'SET_PASSWORD_SERIALIZER': 'drf_registration.api.set_password.SetPasswordSerializer',
+    'SET_PASSWORD_SERIALIZER': 'drf_registration.api.views.set_password.SetPasswordSerializer',
 }
 
 drfr_settings = generate_settings(get_django_settings(), DEFAULT_SETTINGS)

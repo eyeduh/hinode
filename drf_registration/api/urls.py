@@ -1,7 +1,14 @@
 from django.urls import path
 
-from drf_registration.api import login, logout, profile, register, reset_password, change_password, set_password, user
-
+from .views import (
+    login, 
+    logout, 
+    profile, 
+    register, 
+    reset_password, 
+    change_password, 
+    set_password
+)
 
 urlpatterns = [
     path('login/', login.LoginView.as_view(), name='login'),

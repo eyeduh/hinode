@@ -68,3 +68,4 @@ class ResetPasswordCompleteView(PasswordResetCompleteView):
 
     if drfr_settings.RESET_PASSWORD_SUCCESS_TEMPLATE:
         template_name = drfr_settings.RESET_PASSWORD_SUCCESS_TEMPLATE
+        

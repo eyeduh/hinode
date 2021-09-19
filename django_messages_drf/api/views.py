@@ -6,12 +6,12 @@ from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .mixins import RequireUserContextView, ThreadMixin
-from .models import Message, Thread
-from .pagination import Pagination
-from .permissions import DjangoMessageDRFAuthMixin
-from .serializers import MessageSerializer
-from .settings import (
+from django_messages_drf.mixins import RequireUserContextView, ThreadMixin
+from django_messages_drf.models import Message, Thread
+from django_messages_drf.pagination import Pagination
+from django_messages_drf.permissions import DjangoMessageDRFAuthMixin
+from django_messages_drf.serializers import MessageSerializer
+from django_messages_drf.settings import (
     EDIT_MESSAGE_SERIALIZER,
     INBOX_SERIALIZER,
     THREAD_REPLY_SERIALIZER,
@@ -123,3 +123,4 @@ class EditMessageApiView(DjangoMessageDRFAuthMixin, ThreadMixin, RequireUserCont
 
         message = MessageSerializer(instance, context=self.get_serializer_context())
         return Response(message.data, status=status.HTTP_200_OK)
+        
