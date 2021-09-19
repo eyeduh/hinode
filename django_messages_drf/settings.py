@@ -1,0 +1,33 @@
+from django.conf import settings
+from django.utils.module_loading import import_string
+from typing import Any
+
+from .serializers import (
+    EditMessageSerializer,
+    InboxSerializer,
+    SenderReceiverSerializer,
+    ThreadSerializer,
+    ThreadReplySerializer
+)
+
+
+def get_serializer_by_settings(default: Any, setting_name: str):
+
+    path: str = None
+
+    if hasattr(settings, setting_name):
+        path = getattr(settings, setting_name)
+
+    if not path:
+        return default
+    try:
+        return import_string(path)
+    except ImportError as e:  # pragma: no cover
+        raise e
+
+
+INBOX_SERIALIZER = get_serializer_by_settings(InboxSerializer, 'DJANGO_MESSAGES_DRF_INBOX_SERIALIZER')
+THREAD_SERIALIZER = get_serializer_by_settings(ThreadSerializer, 'DJANGO_MESSAGES_DRF_THREAD_SERIALIZER')
+THREAD_REPLY_SERIALIZER = get_serializer_by_settings(ThreadReplySerializer, 'DJANGO_MESSAGES_DRF_MESSAGE_SERIALIZER')
+EDIT_MESSAGE_SERIALIZER = get_serializer_by_settings(EditMessageSerializer, 'DJANGO_MESSAGES_DRF_EDIT_MESSAGE_SERIALIZER')
+SENDER_RECEIVER_SERIALIZER = get_serializer_by_settings(SenderReceiverSerializer, 'DJANGO_MESSAGES_DRF_SENDER_RECEIVER_SERIALIZER')

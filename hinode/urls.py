@@ -20,6 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/nodes/', include('nodes.api.urls')),
     path('api/profiles/', include('users.api.urls')),
-    # path('api/drf_registration/', include('drf_registration.api.urls')),
     path('api/drf_registration/', include('drf_registration.urls')),
+    path('messages_drf/', include('django_messages_drf.urls')),
 ]
