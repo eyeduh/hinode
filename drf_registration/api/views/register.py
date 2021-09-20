@@ -1,4 +1,4 @@
-from django.utils.translation import gettext as _
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import password_validation
 from django.shortcuts import render
 from django.http import HttpResponse
